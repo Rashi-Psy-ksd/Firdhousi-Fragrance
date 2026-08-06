@@ -53,7 +53,7 @@
   /* ----------------------------------------------------------------------------
      Floating Background Effect
   ---------------------------------------------------------------------------- */
-  .floating-bg {
+ .floating-bg {
     position: fixed;
     inset: 0;
     pointer-events: none;
@@ -64,22 +64,47 @@
   
   .float-bottle {
     position: absolute;
-    opacity: 0.30; /* Updated to 30% */
+    opacity: 0.30; 
     border-radius: 0; 
-    filter: grayscale(100%);
-    animation: float-anim 15s ease-in-out infinite;
+    filter: grayscale(20%);
+    /* Combined: Falls first for 1.2s, then stays in place. The floating starts immediately but is masked by the fall */
+    animation: 
+      fall-bounce-anim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+      float-anim 10s ease-in-out infinite 1.2s; /* 1.2s delay ensures floating starts AFTER it lands */
   }
   
-  /* Position and scale variations for the background bottles */
-  .float-1 { width: 300px; top: -5%; left: -5%; animation-delay: 0s; transform: rotate(15deg); }
-  .float-2 { width: 450px; bottom: 10%; right: -10%; animation-delay: -5s; transform: rotate(-10deg); }
-  .float-3 { width: 250px; top: 40%; left: 80%; animation-delay: -2s; transform: rotate(20deg); }
-  .float-4 { width: 350px; bottom: -15%; left: 15%; animation-delay: -8s; transform: rotate(-25deg); }
+  /* Position, scale, and base rotations */
+  /* We use CSS variables (--rot) to pass the custom rotation into the keyframes safely */
+  .float-1 { width: 300px; top: -5%; left: -5%; --rot: 15deg; animation-delay: 0s, 0s; }
+ 
+  .float-3 { width: 250px; top: 40%; left: 80%; --rot: 20deg; animation-delay: 0s, -2s; }
+  .float-4 { width: 350px; bottom: -15%; left: 15%; --rot: -25deg; animation-delay: 0s, -8s; }
   
+  /* 1. Falling Keyframes: Respects the unique rotation of each bottle */
+  @keyframes fall-bounce-anim {
+    0% {
+      transform: translateY(-120vh) rotate(var(--rot)) scaleY(1.1);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(0) rotate(var(--rot)) scaleY(0.9);
+      opacity: 0.30; /* Fades in to your targeted background opacity */
+    }
+    75% {
+      transform: translateY(-15px) rotate(var(--rot)) scaleY(1.02);
+    }
+    90% {
+      transform: translateY(0) rotate(var(--rot)) scaleY(0.98);
+    }
+    100% {
+      transform: translateY(0) rotate(var(--rot)) scaleY(1);
+    }
+  }
+  
+  /* 2. Post-Landing Floating Keyframes */
   @keyframes float-anim {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(5deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+    0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+    50% { transform: translateY(-30px) rotate(calc(var(--rot) + 5deg)); }
   }
   
   /* ----------------------------------------------------------------------------
