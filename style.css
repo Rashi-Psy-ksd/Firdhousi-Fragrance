@@ -396,11 +396,11 @@ nav.main-nav { display: none; }
   margin: 0 auto;
 }
 
-.product-grid.featured {
+.product-grid.featured 
   grid-template-columns: repeat(4, 1fr);
   max-width: 1200px; 
   justify-content: center;
-}
+
 
 
 /* The Animated Glowing Border */
@@ -707,10 +707,10 @@ border-bottom-left-radius: 0;
   ---------------------------------------------------------------------------- */
 /* Responsive adjustments for the grid */
 @media (max-width: 1024px) { 
-  .product-grid { grid-template-columns: repeat(3, 1fr); } 
+  .product-grid, .product-grid.featured { grid-template-columns: repeat(3, 1fr); } 
 }
 @media (max-width: 768px) { 
-  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } 
+  .product-grid, .product-grid.featured { grid-template-columns: repeat(2, 1fr); gap: 16px; } 
 }
 
 @media (max-width: 880px) {
@@ -760,7 +760,7 @@ border-bottom-left-radius: 0;
   .wa-float svg { width: 30px; height: 30px; }
   
   /* --- MOBILE CARD FIXES --- */
-  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .product-grid, .product-grid.featured { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   
   /* Shrinks overall padding and spacing inside the card */
   .card-body { padding: 10px 8px; gap: 4px; }
