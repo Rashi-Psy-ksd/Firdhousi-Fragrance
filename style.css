@@ -759,10 +759,24 @@ border-bottom-left-radius: 0;
   .wa-float { width: 56px; height: 56px; bottom: 20px; right: 20px; }
   .wa-float svg { width: 30px; height: 30px; }
   
-  /* Make sure the mobile grid stays compact to fit two */
-  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .card-body { padding: 12px; }
-  .card-name { font-size: 15px; }
-  .price { font-size: 15px; }
-  .card-add { padding: 8px; font-size: 10px; }
+  /* --- MOBILE CARD FIXES --- */
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  
+  /* Shrinks overall padding and spacing inside the card */
+  .card-body { padding: 10px 8px; gap: 4px; }
+  .card-name { font-size: 13px; }
+  .card-size { font-size: 11px; }
+  
+  /* Shrinks the reviews and star icon */
+  .card-reviews { font-size: 10px; gap: 3px; margin-bottom: 8px; }
+  .star-icon { width: 10px; height: 10px; }
+  
+  /* Keeps the price row tight and forces the discount to ONE line */
+  .card-price-row { gap: 4px; margin-bottom: 8px; flex-wrap: nowrap; }
+  .price { font-size: 13px; }
+  .price-compare { font-size: 11px; }
+  .discount { font-size: 11px; white-space: nowrap; } /* white-space: nowrap stops the 2-line wrapping */
+  
+  /* Shrinks the add to cart button */
+  .card-add { padding: 8px; font-size: 9px; }
 }
