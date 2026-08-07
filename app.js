@@ -271,6 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.closest("#checkout-btn")){ sendOrderToWhatsApp(); return; }
     if (e.target.closest("#wa-float")){ openGeneralWhatsApp(); return; }
     if (e.target.closest("#menu-toggle")){ toggleNav(); return; }
+    if (e.target.closest("#menu-close")){ document.querySelector("nav.main-nav").classList.remove("open"); return; }
+  
 
     // close mobile nav after clicking a link
     if (e.target.closest("nav.main-nav a")){
