@@ -28,9 +28,11 @@ const PRODUCTS = [
     category: "Royal Oud",
     price: 3499,
     compareAtPrice: 3999,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "12ml",
     image: "images/Oudh_Premium.webp",
-    description: "A regal blend of aged Cambodian oud, saffron and amber — deep, smoky and unforgettable. Long-lasting attar, alcohol-free.",
+    description: "A regal blend of deep, smoky and unforgettable.",
     dateAdded: "2026-08-01",
     badge: "Bestseller"
   },
@@ -40,9 +42,11 @@ const PRODUCTS = [
     category: "Mukhallat",
     price: 2799,
     compareAtPrice: null,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "12ml",
     image: "images/mukallat.jpg",
-    description: "Our signature house blend — rose, oud and musk layered into a warm, garden-of-paradise scent that lingers for hours.",
+    description: "Our signature house blend layered into a warm, garden-of-paradise scent.",
     dateAdded: "2026-07-28",
     badge: "Signature"
   },
@@ -52,9 +56,11 @@ const PRODUCTS = [
     category: "Amber Attar",
     price: 1999,
     compareAtPrice: 2299,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "10ml",
     image: "images/attar 3.jpg",
-    description: "Velvety black amber wrapped in vanilla and warm spice. An intimate, cosy fragrance for the evening.",
+    description: "An intimate, cosy fragrance for the evening.",
     dateAdded: "2026-07-20"
   },
   {
@@ -63,10 +69,12 @@ const PRODUCTS = [
     category: "Floral Attar",
     price: 2299,
     compareAtPrice: null,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "12ml",
     image: "images/rose.jpg",
-    description: "Pure Taif rose petals distilled into a soft, romantic attar — elegant and timeless.",
-    dateAdded: "2026-07-15"
+    description: "Pure Taif rose petals distilled into a soft, romantic attar.",
+    dateAdded: "2026-08-07"
   },
   {
     id: "p5",
@@ -74,9 +82,11 @@ const PRODUCTS = [
     category: "White Musk",
     price: 1599,
     compareAtPrice: null,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "10ml",
     image: "images/mask al haramain.jpg",
-    description: "A clean, powdery white musk inspired by the sacred scents of the Haramain — gentle and pure.",
+    description: "the sacred scents of the Haramain — gentle and pure.",
     dateAdded: "2026-07-05"
   },
   {
@@ -85,12 +95,43 @@ const PRODUCTS = [
     category: "Perfume Oil",
     price: 2499,
     compareAtPrice: 2799,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
     size: "12ml",
     image: "images/sultan.jpg",
-    description: "A bold bouquet of jasmine, oud and sandalwood fit for royalty. Our most complimented scent.",
+    description: "A bold fit for royalty. Our most complimented scent.",
     dateAdded: "2026-06-22",
     
-  }
+  }, 
+  {
+    id: "p7",
+    name: "Oud Al Malik",
+    category: "Royal Oud",
+    price: 3499,
+    compareAtPrice: 3999,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
+    size: "12ml",
+    image: "images/Oudh_Premium.webp",
+    description: "A regal blend of deep, smoky and unforgettable.",
+    dateAdded: "2026-08-01",
+    badge: "Bestseller"
+  },
+  {
+    id: "p8",
+    name: "Oud Al Malik",
+    category: "Royal Oud",
+    price: 3499,
+    compareAtPrice: 3999,
+    rating: 4.89,        // ADD THIS
+    reviews: 53,         // ADD THIS
+    size: "12ml",
+    image: "images/Oudh_Premium.webp",
+    description: "A regal blend of deep, smoky and unforgettable.",
+    dateAdded: "2026-08-01",
+    badge: "Bestseller"
+  },
+
 ];
 
 /* ----------------------------------------------------------------------------

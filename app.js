@@ -53,26 +53,50 @@ window.placeholderMarkup = placeholderMarkup;
 function cardHTML(p){
   const isNew = isRecentlyAdded(p.dateAdded);
   const onSale = p.compareAtPrice && p.compareAtPrice > p.price;
+
+  // Calculate the discount percentage and price row
+  let priceRowHTML = `<span class="price">${fmt(p.price)}</span>`;
+  
+  if (onSale) {
+      const discount = Math.round(((p.compareAtPrice - p.price) / p.compareAtPrice) * 100);
+      priceRowHTML = `
+          <span class="price">${fmt(p.price)}</span> 
+          <span class="price-compare">${fmt(p.compareAtPrice)}</span> 
+          <span class="discount">${discount}% Off</span>
+      `;
+  }
+
   return `
   <article class="card">
-    <div class="card-media">
-      ${productImageMarkup(p)}
-      ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
-      ${isNew ? `<span class="card-badge new">New</span>` : ""}
-      ${onSale && !isNew ? `<span class="card-badge sale">Sale</span>` : ""}
-    </div>
-    <div class="card-body">
-      <div class="card-cat">${p.category}</div>
-      <h3 class="card-name">${p.name}</h3>
-      <div class="card-size">${p.size}</div>
-      <p class="card-desc">${p.description}</p>
-      <div class="card-price-row">
-        <span class="price">${fmt(p.price)}</span>
-        ${onSale ? `<span class="price-compare">${fmt(p.compareAtPrice)}</span>` : ""}
+    <div class="card-inner">
+      <div class="card-media">
+        ${productImageMarkup(p)}
+        ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
+        ${isNew ? `<span class="card-badge new">New</span>` : ""}
+        ${onSale && !isNew ? `<span class="card-badge sale">Sale</span>` : ""}
       </div>
-      <button class="card-add" data-id="${p.id}" ${p.soldOut ? "disabled" : ""}>
-        ${p.soldOut ? "Sold Out" : ICONS.bag + " Add to Cart"}
-      </button>
+      <div class="card-body">
+        <div class="card-cat">${p.category}</div>
+        <h3 class="card-name">${p.name}</h3>
+        <div class="card-size">${p.size}</div>
+        
+
+        <div class="card-reviews">
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#F5C518">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+            <span class="rating">${p.rating || '5.0'}</span>
+            <span class="review-count">(${p.reviews || '0'} Reviews)</span>
+          </div>
+
+        <div class="card-price-row">
+          ${priceRowHTML}
+        </div>
+        
+        <button class="card-add" data-id="${p.id}" ${p.soldOut ? "disabled" : ""}>
+          ${p.soldOut ? "Sold Out" : "Add to Cart"}
+        </button>
+      </div>
     </div>
   </article>`;
 }
