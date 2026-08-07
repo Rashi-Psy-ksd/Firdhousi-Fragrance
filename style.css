@@ -396,12 +396,11 @@ nav.main-nav { display: none; }
   margin: 0 auto;
 }
 
-.product-grid.featured 
+.product-grid.featured {
   grid-template-columns: repeat(4, 1fr);
   max-width: 1200px; 
   justify-content: center;
-
-
+}
 
 /* The Animated Glowing Border */
 .card {
