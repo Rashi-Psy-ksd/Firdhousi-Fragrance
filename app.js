@@ -109,7 +109,7 @@ function isRecentlyAdded(dateStr){
 /* ---------- render: sections ---------- */
 function renderNewArrivals(){
   const el = document.getElementById("new-arrivals-grid");
-  const newest = sortedByNewest(PRODUCTS).slice(0, 3);
+  const newest = sortedByNewest(PRODUCTS).slice(0, 4);
   el.innerHTML = newest.map(cardHTML).join("");
 }
 function renderShopAll(){
