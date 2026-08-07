@@ -397,7 +397,7 @@ nav.main-nav { display: none; }
 }
 
 .product-grid.featured {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   max-width: 900px; 
   justify-content: center;
 }
