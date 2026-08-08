@@ -192,6 +192,63 @@ function renderCart(){
   document.getElementById("checkout-btn").disabled = cart.length === 0;
 }
 
+
+/* ============================================================================
+   REELS VIDEO PLAYER LOGIC (Bulletproof Version)
+============================================================================ */
+// This acts as a lock to prevent the videos from fighting each other
+let isSwitching = false; 
+
+function activateReel(card) {
+  // If clicking the one already playing, or if currently switching, do nothing
+  if (card.classList.contains('is-playing') || isSwitching) return;
+  
+  isSwitching = true; // Lock the controls temporarily
+  const clickedVideo = card.querySelector('video');
+
+  // 1. Reset, mute, and pause all OTHER videos
+  document.querySelectorAll('.reel-card').forEach(otherCard => {
+    const otherVideo = otherCard.querySelector('video');
+    if (otherCard !== card) {
+      otherCard.classList.remove('is-playing');
+      otherVideo.controls = false;
+      otherVideo.muted = true;
+      otherVideo.pause(); // Freeze the background ones
+    }
+  });
+
+  // 2. Play the new clicked video
+  card.classList.add('is-playing');
+  clickedVideo.currentTime = 0;
+  clickedVideo.muted = false;
+  clickedVideo.controls = true;
+  clickedVideo.play();
+
+  // Unlock the controls after a tiny delay so events don't cross over
+  setTimeout(() => { isSwitching = false; }, 200);
+}
+
+// 3. Smart listeners for when the user taps the native pause/play buttons
+document.querySelectorAll('.reel-card video').forEach(video => {
+  
+  video.addEventListener('pause', function() {
+    const card = this.closest('.reel-card');
+    // ONLY restart the thumbnails if the user manually paused the MAIN active video
+    if (card.classList.contains('is-playing') && !isSwitching) {
+      document.querySelectorAll('.reel-card:not(.is-playing) video').forEach(v => v.play());
+    }
+  });
+
+  video.addEventListener('play', function() {
+    const card = this.closest('.reel-card');
+    // If the user resumes the main active video, freeze the thumbnails again
+    if (card.classList.contains('is-playing') && !isSwitching) {
+      document.querySelectorAll('.reel-card:not(.is-playing) video').forEach(v => v.pause());
+    }
+  });
+  
+});
+
 /* ---------- WhatsApp checkout ---------- */
 function buildOrderMessage(){
   const lines = [];
