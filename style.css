@@ -938,3 +938,65 @@ border-bottom-left-radius: 0;
   /* Shrinks the add to cart button */
   .card-add { padding: 8px; font-size: 9px; }
 }
+
+/* ============================================================================
+   MOBILE OVERRIDES: Force Single Line for Buttons & Trust Row
+============================================================================ */
+@media (max-width: 768px) {
+  
+  /* 1. Force the two buttons into one row */
+  .hero-ctas {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 0 5px; /* Slight padding so they don't touch screen edges */
+  }
+
+  .hero-ctas .btn {
+    flex: 1; /* Makes both buttons take up exactly equal space */
+    padding: 12px 6px !important;
+    font-size: 10px !important; /* Scaled down to physically fit */
+    white-space: nowrap; /* Prevents the text from breaking into two lines */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* Shrinks the WhatsApp/Button icons slightly for mobile */
+  .hero-ctas .btn svg {
+    width: 12px !important;
+    height: 12px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 2. Force the three trust badges into one row */
+  .trust-row {
+    flex-wrap: nowrap !important;
+    gap: 8px !important; /* Tighter gap between the three items */
+    justify-content: space-between !important;
+    padding-top: 24px !important;
+    
+    font-size: 8px !important; /* Drastically reduced font size so all 3 fit side-by-side */
+    letter-spacing: 0.02em !important;
+    width: 100%;
+  }
+
+  /* Targets the individual text/icon pairs inside the trust row */
+  .trust-row > div,
+  .trust-row > span,
+  .trust-row > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px !important;
+    white-space: nowrap !important; /* Forces the text to stay in one line */
+  }
+
+  /* Shrinks the trust icons so they don't overpower the small text */
+  .trust-row svg, 
+  .trust-row img {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0; /* Stops the icons from getting squished or distorted */
+  }
+}
